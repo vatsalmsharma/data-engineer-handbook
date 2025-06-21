@@ -1,0 +1,8 @@
+Learnings
+
+Rename docker container
+    docker rename old-name new-name
+
+Container details 
+    docker ps -a
+
