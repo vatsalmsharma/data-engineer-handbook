@@ -1,0 +1,19 @@
+SCD
+
+Entire History
+Step 1 : Get the previous value using LAG()
+Step 2 : Build as Change Indicator based on condition  ‘Current Value’ <> ‘Previous Value’>
+Step 3 : Calculate streak, I.e., sum (change indicator) over(partition by player order by current_season)
+Step 4 : GROUP BY aggregation with MIN() and MAX() gives the the SCD table 
+
+
+Incremental History
+-- Step 1 : Latest records from SCD table will be 'Yesterday' 
+-- Step 2 : Get current records from source table => 'Today'
+-- Step 3 : Historic records from SCD table
+-- Step 4 : Unchanged Records from 'yesterday' and 'today'
+-- Step 5 : Changed Records between 'Yesterday' and 'Today'
+--			Note: We need to create 2 records here, one for the closed records, ie., between Start_DATE and End_DATE
+--					and A new cords for the 'changed' value
+-- Step 6 : Un-nest the Changed records
+-- Step 7 : New Records
