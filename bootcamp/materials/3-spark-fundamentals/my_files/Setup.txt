@@ -1,0 +1,65 @@
+# Check Brew Version 
+brew --version 
+
+
+# Install pyenv and its dependencies
+brew install pyenv
+brew install openssl readline sqlite3 xz zlib
+
+# Set up pyenv in your shell
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+source ~/.zprofile
+
+# Install Python 3.13 using pyenv
+pyenv install 3.13.0
+pyenv install 3.12.0
+
+# Install pyenv-virtualenv via Homebrew
+brew install pyenv-virtualenv
+
+# Add pyenv-virtualenv to your shell
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+
+
+
+# Create a virtual environment based on Python 3.13
+pyenv virtualenv 3.13.0 myenv-3.13
+pyenv virtualenv 3.12.0 myenv-3.12
+
+
+# You can check available versions:
+pyenv install --list | grep 3.12
+
+# List avaibale environments
+pyenv virtualenvs
+
+# Activate version 
+pyenv activate myenv-3.12
+
+# Validate
+python --version
+which python
+
+# Deactivate 
+pyenv deactivate
+
+
+Note: Conda init is commented out from  ~/.zshrc
+        source ~/.zshrc
+        source ~/.zprofile
+
+
+pwd
+    /Users/vatsalsharma/Documents/Data Prep/Zach DE in 2025 /data-engineer-handbook/bootcamp/materials/3-spark-fundamentals
+
+pip install -r requirements.txt
+
+make up
+
+docker compose down -v
